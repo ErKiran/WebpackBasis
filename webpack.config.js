@@ -6,6 +6,7 @@ build: path.join(__dirname, 'build')
 module.exports = {
 // Entry accepts a path or an object of entries. We'll be using the
 // latter form given it's convenient with more complex configurations.
+mode: 'production',
 entry: {
 app: PATHS.app
 },
