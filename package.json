@@ -6,10 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "webpack-dev-server",
-    "start": "webpack-dev-server --content-base build",
-      "dev": "webpack --mode development",
-      "build": "webpack --mode production"
-
+    "start": "webpack-dev-server",
+    "dev": "webpack",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,7 @@
   "devDependencies": {
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.3"
   }
 }
