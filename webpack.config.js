@@ -14,6 +14,12 @@ mode: 'production',
 entry: {
 app: PATHS.app
 },
+// Add resolve.extensions.
+// '' is needed to allow imports without an extension.
+// Note the .'s before extensions as it will fail to match without!!!
+resolve: {
+extensions: ['.js', '.jsx']
+},
 output: {
 path: PATHS.build,
 filename: 'bundle.js'
@@ -28,12 +34,26 @@ loaders: ['style-loader', 'css-loader'],
 include: PATHS.app
 }
 ]
+},
+module:{
+rules:[
+{
+test: /\.jsx?$/,
+// Enable caching for improved performance during development
+// It uses default OS directory by default. If you need something
+// more custom, pass a path to it. I.e., babel?cacheDirectory=<path>
+loaders: ['babel-loader'],
+// Parse only app files! Without this it will go through entire project.
+// In addition to being slow, that will most likely result in an error.
+include: PATHS.app
 }
-
+]
+}
 };
 // Default configuration
 if(TARGET === 'start' || !TARGET) {
 module.exports = merge(common, {
+	devtool: 'eval-source-map',
 devServer: {
 contentBase: PATHS.build,
 // Enable history API fallback so HTML5 History API based
